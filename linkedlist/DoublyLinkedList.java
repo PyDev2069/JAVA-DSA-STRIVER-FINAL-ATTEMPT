@@ -38,6 +38,23 @@ public class DoublyLinkedList {
             head.prev = null;
         }        
     }
+
+    //* Reverse a Doubly LL */
+    void reverse(){
+        DLLNode current = head;
+        DLLNode temp = null; 
+        while(current!=null){
+            temp = current.prev;
+
+            current.prev = current.next;
+            current.next = temp;
+            
+            current = current.prev;
+        }
+        if(temp!=null){
+            head = temp.prev;
+        }
+    }
     public static void main(String[] args) {
         DoublyLinkedList list = new DoublyLinkedList();
 
@@ -55,6 +72,9 @@ public class DoublyLinkedList {
         list.display();
 
         list.AddAtHead(79);
+        list.display();
+
+        list.reverse();
         list.display();
 
     }
